@@ -12,20 +12,21 @@ struct lista
 	int info;
 	struct lista *prox;
 };
-
+//Função para criar uma lista vazia.
 Lista *lst_cria(void)
 {
-	return NULL;
+	return NULL; //Retorna um ponteiro nulo, indicando que a lista está vazia.
 }
-
+//Função para inserir um elemento no início da lista.
 Lista *lst_insere(Lista *l, int v)
 {
-	Lista *novo = (Lista *)malloc(sizeof(Lista));
+	Lista *novo = (Lista *)malloc(sizeof(Lista)); //Reserva espaço na memorida para a struct Lista.
 	if (novo == NULL)
 	{
-		printf("[ERRO] memoria insuficiente!");
+		printf("[ERRO] memoria insuficiente!"); //informa um erro, e que não há memória sufuceunte no visor.
 		exit(1);
 	}
+	novo->info = v; 
 	novo->info = v;
 	novo->prox = l;
 	return novo;
