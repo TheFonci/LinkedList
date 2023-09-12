@@ -23,13 +23,12 @@ Lista *lst_insere(Lista *l, int v)
 	Lista *novo = (Lista *)malloc(sizeof(Lista)); //Reserva espaço na memorida para a struct Lista.
 	if (novo == NULL)
 	{
-		printf("[ERRO] memoria insuficiente!"); //informa um erro, e que não há memória sufuceunte no visor.
-		exit(1);
+		printf("[ERRO] memoria insuficiente!"); //Informa um erro, e que não há memória sufuceunte no visor.
+		exit(1); //Encerra o programa com a mensagem a cima.
 	}
-	novo->info = v; 
-	novo->info = v;
-	novo->prox = l;
-	return novo;
+	novo->info = v; // Define o valor do novo elemento como 'v'.
+	novo->prox = l; // Define o próximo elemento como o antigo primeiro elemento da lista
+	return novo; // Retorna o ponteiro para o novo elemento, que agora é o primeiro da lista.
 
 	/* Ou para alterar diretamente
 
@@ -39,18 +38,18 @@ Lista *lst_insere(Lista *l, int v)
 	novo->prox = *t;
 	*t = novo; */
 }
-
+// Indica se a lista está vazia.
 int lst_vazia(Lista *l)
 {
 	return (l == NULL);
 }
-
+// Imprime no visor o conteudo da lista.
 void lst_imprime(Lista *l)
 {
 	Lista *p;
-	for (p = l; p != NULL; p = p->prox)
+	for (p = l; p != NULL; p = p->prox) //Percorre os daods da lista com um laço de repetição.
 	{
-		printf("\tInfo = %d \n", p->info);
+		printf("\tInfo = %d \n", p->info); //Imprime no visor os dados que foram percorridos no laço a cima.
 	}
 }
 
@@ -104,12 +103,12 @@ void lst_libera(Lista *l)
 
 Lista *lst_insere_ordenada(Lista *l, int v)
 {
-	Lista *novo;
-	Lista *ant = NULL;
-	Lista *p = l;
-	while (p != NULL && p->info < v)
+	Lista *novo; //Novo nó a ser inserido.
+	Lista *ant = NULL; //Ponteiro para o elemento anterior.
+	Lista *p = l; //Ponteiro para percorrer a lista.
+	while (p != NULL && p->info < v) //Enquanto P não for o ultimo nó && A informação do nó atual for menor que a informação a ser inserida.
 	{
-		ant = p;
+		ant = p; //Nó anterior recebe nó atual.
 		p = p->prox;
 	}
 	novo = (Lista *)malloc(sizeof(Lista));
